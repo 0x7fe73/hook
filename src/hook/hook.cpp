@@ -7,9 +7,7 @@
 */
 
 bool Hook::HookFunction(void *target, void *jump, size_t size) {
-    DWORD protect;
-    
-    if (!ProtectHook((void *)target, size, protect))
+    if (!ProtectHook((void *)target, size))
           return false;
 
     uint8_t instructions[] = {0xE9, 0x0, 0x0, 0x0, 0x0};
@@ -21,7 +19,8 @@ bool Hook::HookFunction(void *target, void *jump, size_t size) {
     return true;
 }
 
-BOOL Hook::ProtectHook(void *hook, size_t size, DWORD protect) {
+BOOL Hook::ProtectHook(void *hook, size_t size) {
+    DWORD protect;
     BOOL resp = VirtualProtect(hook, size, PAGE_EXECUTE_READWRITE, &protect);
     return resp;
 }
