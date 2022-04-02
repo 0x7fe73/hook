@@ -7,7 +7,7 @@
 */
 
 bool Hook::HookFunction(void *target, void *jump, size_t size) {
-    if (!ProtectHook((void *)target, size))
+    if (!ProtectHook(target, size))
           return false;
 
     uint8_t instructions[] = {0xE9, 0x0, 0x0, 0x0, 0x0};
