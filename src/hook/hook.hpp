@@ -10,5 +10,5 @@
 class Hook {
     public:
         bool HookFunction(void *target, void *jump, size_t size);
-        BOOL ProtectHook(void *hook, size_t size, DWORD protect);
+        BOOL ProtectHook(void *hook, size_t size);
 };
